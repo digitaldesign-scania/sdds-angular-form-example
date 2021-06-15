@@ -8,7 +8,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class ReactiveForm implements OnInit {
   username = "Add username";
-  myForm: FormGroup;
+  myForm: FormGroup = this.fb.group({
+    username: ["", Validators.required],
+    customInput: "Default value",
+    CustomCheck: true,
+    CustomDropdown: ["jakarta", Validators.required],
+    nativeDropdown: ["car", Validators.required]
+  });
   myValue: any = {};
   initialValue: any = {};
   list = [
@@ -21,18 +27,7 @@ export class ReactiveForm implements OnInit {
 
   ngOnInit() {
     // Dropdown
-
     this.initialValue = this.list[0];
     this.myValue = this.initialValue;
-
-    //Formcontrol
-    this.myForm = this.fb.group({
-      username: ["", Validators.required],
-      customInput: "Default value",
-      CustomCheck: true,
-      CustomDropdown: ["", Validators.required],
-      nativeDropdown: "car"
-    });
-    this.myForm.valueChanges.subscribe(console.log);
   }
 }
