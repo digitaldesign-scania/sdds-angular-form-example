@@ -45,7 +45,6 @@ export class CustomDropdown implements ControlValueAccessor {
   }
 
   handleChange(event) {
-    console.log(event);
     this.onChange(event.detail.label);
   }
 }
